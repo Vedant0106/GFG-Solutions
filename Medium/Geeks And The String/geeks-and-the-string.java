@@ -28,7 +28,10 @@ class Solution {
     public static String removePair(String s) {
         // code here
         Stack<Character>p= new Stack<>();
+        char c;
+        String ans="";
         int n=s.length();
+        
         for(int i=0;i<n;i++)
         {
            if(p.empty())
@@ -44,8 +47,7 @@ class Solution {
                else p.push(s.charAt(i));
            }
         }
-        char c;
-        String ans="";
+       
         while(!p.empty())
         {
             c=p.peek();
@@ -55,8 +57,11 @@ class Solution {
          StringBuilder str = new StringBuilder(ans);
          StringBuilder reverseStr = str.reverse();
          String result = str.toString();
+         
         if(ans.length()==0)
+        {
         return "-1";
+        }
         return result;
     }
 }
