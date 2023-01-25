@@ -27,9 +27,9 @@ class GFG {
 class Solution {
     String findSum(String X, String Y) {
         // code here
-        java.math.BigInteger b1 = new java.math.BigInteger(X);
-        java.math.BigInteger b2 = new java.math.BigInteger(Y);
+        java.math.BigInteger a = new java.math.BigInteger(X);
+        java.math.BigInteger b = new java.math.BigInteger(Y);
         
-         return b1.add(b2)+"";
+         return a.add(b)+"";
     }
 }
