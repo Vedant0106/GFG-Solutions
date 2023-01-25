@@ -31,23 +31,25 @@ class Main {
 
 class Solution{
 
-    long maxSubarraySum(int arr[], int n)
-    {
-     int currsum=0;
-     int maxsum=Integer.MIN_VALUE;
-     
-     for(int i=0; i<n; i++)
-     {
-         currsum= currsum+arr[i];
-         
-        if(currsum>maxsum)
-             maxsum=currsum;
-              
-        if(currsum<0)
-             currsum=0;
-             
-     }
-     return maxsum;
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum.
+    long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        int cs=0;
+        int ms=Integer.MIN_VALUE;
+        
+        for(int i =0; i<n; i++)
+        {
+            cs+=arr[i];
+            if(cs>ms)
+            ms=cs;
+            if(cs<0)
+            cs=0;
+        }
+        return ms;
     }
+    
 }
 
