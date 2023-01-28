@@ -35,11 +35,10 @@ class Solution {
         // code here
         if(a == b)  
            return 0;
-        if(((a&b) == a) || ((a&b) == b)) 
+        if((a&b) == a|| (a&b) == b) 
            return 1;
         else 
            return 2;
-    
     }
 }
         
