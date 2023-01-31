@@ -27,7 +27,7 @@ class Solution {
     static int minRepeats(String A, String B) {
         // code here
         String str = new String(A);
-        int count = 0;
+        int count = 1;
 
         while(A.length() <= 2*B.length())
         {
@@ -38,7 +38,7 @@ class Solution {
             } 
             else
             {
-                return count + 1;
+                return count;
             }
         }
         return -1;
