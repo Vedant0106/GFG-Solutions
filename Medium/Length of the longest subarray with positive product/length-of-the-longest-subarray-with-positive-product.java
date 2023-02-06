@@ -28,32 +28,35 @@ class Geeks
 }
 // } Driver Code Ends
 
-
 //User function Template for Java
 
 class Solution{
     /* Function to return the length of the
        longest subarray with ppositive product */
-    int maxLength(int arr[], int n) { 
-        //code here
-  int neg_found=-1,zero_found=-1,neg=0,max=0;
-        for(int i=0;i<n;i++){
-           if(arr[i]<0){
+    int maxLength(int arr[], int n) 
+    { 
+     int neg_found=-1, zero_found=-1, neg=0,max=0;
+        for(int i=0;i<n;i++)
+        {
+           if(arr[i]<0)
+           {
                neg++;
                if(neg_found==-1)
                 neg_found=i;
            }
-           if(arr[i]==0){
+           if(arr[i]==0)
+           {
                zero_found=i;
                neg_found=-1; // products will be 0
-               neg=0; // reset!
+               neg=0;        // reset!
            }
-           if(neg%2==0){
-               max=Math.max(i-zero_found,max);
-           }else 
-                max=Math.max(i-neg_found,max);
+           if(neg%2==0)
+           {
+               max= Math.max(i-zero_found,max);
+           } 
+           else 
+                max= Math.max(i-neg_found,max);
         }
         return max;
     }
-   
 }
