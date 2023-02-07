@@ -25,22 +25,29 @@ class GfG
 
 
 class Solution{
-
-	public int minCoins(int coins[], int M, int V) 
-	{ 
-	    // Your code goes here
-	      int[] dp = new int[1000000];
-    int sum = 1;
-    while(sum <= V)
-    {
-        dp[sum] = Integer.MAX_VALUE;
-        for(int m : coins) 
-        {
-            if(sum >= m && dp[sum-m] != Integer.MAX_VALUE)
-                dp[sum] = Math.min(dp[sum], dp[sum - m] + 1);
-        }
-        sum++;
-    }
-    return dp[V] == Integer.MAX_VALUE ? -1 : dp[V];
-	} 
+int minCoins(int arr[], int n, int sum) 
+{ 
+	    int dp[][]=new int[n+1][sum+1] ; 
+	    for(int i=0 ; i<=n ; i++)
+	    {
+	        dp[i][0]=0 ; 
+	    }
+	    for(int i=1 ; i<=sum ; i++)
+	    {
+	        dp[0][i]=sum+100 ; 
+	    }
+	    for(int i=1 ; i<=n ; i++)
+	    {
+	        for(int j=1 ; j<=sum ; j++)
+	        {
+	            if(arr[i-1]<=j){
+	                dp[i][j] = Math.min(dp[i][j-arr[i-1]]+1,dp[i-1][j]) ;
+	            }
+	            else{
+	                dp[i][j] = dp[i-1][j] ;
+	            }
+	        }
+	    }
+	    return dp[n][sum]==sum+100?-1:dp[n][sum] ;
+	}
 }
