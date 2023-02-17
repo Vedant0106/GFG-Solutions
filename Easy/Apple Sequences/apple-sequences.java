@@ -34,7 +34,7 @@ class Solution{
     public static int appleSequence(int n, int m, String arr){
         //code here
          int cnt = 0;
-        int ans = Integer.MIN_VALUE;
+        int ans = 0;
         int st = 0;
         int en = 0;
 
