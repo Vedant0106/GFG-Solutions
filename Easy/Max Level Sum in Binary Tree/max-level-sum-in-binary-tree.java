@@ -89,63 +89,32 @@ class Main {
 }
 // } Driver Code Ends
 
-
 class Solution {
 
     public int maxLevelSum(Node root) {
-
         // add code here.
-
-        
-
         Queue<Node> q = new LinkedList<>();
-
         q.add(root);
-
         int ans = Integer.MIN_VALUE;
-
         while(!q.isEmpty())
-
         {
-
             int size = q.size();
-
             int sum = 0;
-
             for(int i = 0;i<size;i++)
-
             {
-
                 Node cur = q.poll();
-
                 sum += cur.data;
-
                 if(cur.left != null)
-
                 {
-
                     q.add(cur.left);
-
                 }
-
                 if(cur.right != null)
-
                 {
-
                     q.add(cur.right);
-
                 }
-
-                
-
             }
-
             ans = Math.max(ans, sum);
-
         }
-
         return ans;
-
     }
-
 }
