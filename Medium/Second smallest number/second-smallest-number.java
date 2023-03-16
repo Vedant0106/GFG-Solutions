@@ -27,41 +27,36 @@ class GFG
 //User function Template for Java
 
 class Solution{
-    static String secondSmallest(int S, int D){
-        if(9*D<=S){
-            return "-1";
-        }
-        else{
-            int arr[] = new int[D];
-            arr[0] = 1;
-            int sum = 1;
-            int i = D-1;
-            while(sum<S && i>=0){
-                arr[i]++;
-                sum++;
-                if(arr[i]==9){
-                    i--;
+   static String secondSmallest(int S, int D){
+        // code here
+        if(D==1 || S==1 || S>=9*D) return "-1";
+        boolean isChanged=false;
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<D;i++) {
+            int digit;
+            if(S>9) {
+                digit=9;
+                S-=9;
+            } else {
+                if(i==D-1) {
+                    digit=S;
+                } else {
+                    if(S>1) {
+                        digit=S-1;
+                        S=1;
+                    } else {
+                        digit=0;
+                    }
                 }
             }
-            i = D-1;
-            while(i>=0 && arr[i]==9){
-                i--;
+            if(!isChanged && digit<9 && sb.length()>0) {
+                digit++;
+                char c = sb.charAt(sb.length()-1);
+                sb.setCharAt(sb.length()-1,--c);
+                isChanged=true;
             }
-            if(i+1<D)
-                i++;
-            if(i==0){
-                return "-1";
-            }
-            else{
-                arr[i]--;
-                arr[i-1]++;
-                String ans = "";
-                for(i = 0;i < D;i++){
-                    ans += arr[i];
-                }
-                return ans;
-            }
+            sb.append(digit);
         }
+        return sb.reverse().toString();
     }
 }
-
