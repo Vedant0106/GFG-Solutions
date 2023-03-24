@@ -24,42 +24,43 @@ class Solution
 { 
    String removeReverse(String S) 
     { 
-        int i=0,j=S.length()-1;
+       HashMap<Character, Integer> map = new HashMap<>();
+        int i=0, j=S.length()-1;
+        boolean rev = false;
+        HashSet<Integer> del = new HashSet<>();
         
-        int[] map=new int[26]; Arrays.fill(map,0);
-        boolean flag=true;
-        int cnt=0;
-        
-        
-        for(char ch:S.toCharArray()) map[ch-'a']++;
-        
-        String begin="",end="";
-        
-        while(i<=j)
-        {
-            char ch;
-            if(flag) ch=S.charAt(i++);
-            else ch=S.charAt(j--);
-            
-            if(map[ch-'a']>1)
-            {
-                map[ch-'a']--;
-                cnt++;
-                flag=!flag;
-            }
-            else
-            {
-                if(flag) begin+=ch;
-                else end=ch+end;
-            }
+        for(char ch : S.toCharArray()){
+            map.put(ch, map.getOrDefault(ch, 0)+1);
         }
         
-        StringBuffer ans=new StringBuffer(begin+end);
+        while(i<j){
+            char first = S.charAt(i);
+            char last = S.charAt(j);
+            
+            if(!rev){
+                if(map.get(first) > 1){
+                    map.put(first, map.get(first)-1);
+                    del.add(i);
+                    rev = !rev;
+                }
+                i++;
+            } else {
+                if(map.get(last) > 1){
+                    map.put(last, map.get(last)-1);
+                    del.add(j);
+                    rev = !rev;
+                }
+                j--;
+            }
+        }
+        StringBuilder ans = new StringBuilder();
         
-        if(cnt%2==1) ans.reverse();
+        for(i=0; i<S.length(); i++){
+            if(!del.contains(i)) ans.append(S.charAt(i));
+        }
+        if(rev) return ans.reverse().toString();
         
-            return ans.toString();
-        
+        return ans.toString();
     }
 }
 
