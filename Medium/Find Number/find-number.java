@@ -26,19 +26,18 @@ class GFG {
 //User function Template for Java
 class Solution
 {
-    public long findNumber(long n)
+    public long findNumber(long N)
     {
-        if(n<=5){
-            if(n == 1) return 1;
-            if(n == 2) return 3;
-            if(n == 3) return 5;
-            if(n == 4) return 7;
-            if(n == 5) return 9;
+           int[] arr= { 9 , 1 , 3 , 5 , 7 };
+        long curr=1, ans=0;
+        while(N!=0)
+        {
+            long index= N%5;
+            ans = arr[(int)index] * curr + ans;
+            if(N%5==0) N = N/5 - 1;
+            else N = N/5;
+            curr *=10;
         }
-        if(n%5 == 0)
-        { 
-            return findNumber(n/5-1)*10+9;
-        }
-        return findNumber(n/5)*10+findNumber(n%5);
+        return ans;
     }
 }
