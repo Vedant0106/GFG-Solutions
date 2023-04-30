@@ -43,7 +43,7 @@ class Solve {
         for(int i=1;i<n+1;i++)
         {
             if(a[i]==2){
-                 r = i;
+                r = i;
             }
             if(a[i]==0){
                 m = i;
