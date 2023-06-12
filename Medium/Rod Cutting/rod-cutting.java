@@ -4,22 +4,25 @@ import java.util.*;
 
 class RodCutting {
 
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+    public static void main(String args[])throws IOException {
+        BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
+        
+        int t = Integer.parseInt(in.readLine().trim());
         while (t-- > 0) {
-            int n = sc.nextInt();
+            int n = Integer.parseInt(in.readLine().trim());
+            String s[]=in.readLine().trim().split(" ");
             int[] arr = new int[n];
-            for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+            for (int i = 0; i < n; i++) arr[i] = Integer.parseInt(s[i]);
 
             Solution ob = new Solution();
-            System.out.println(ob.cutRod(arr, n));
+            out.println(ob.cutRod(arr, n));
         }
+        out.close();
     }
 }
 
 // } Driver Code Ends
-
 
 class Solution{
     public int cutRod(int price[], int n) {
